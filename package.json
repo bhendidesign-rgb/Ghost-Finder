@@ -1,0 +1,19 @@
+{
+  "name": "ghost-product-finder",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Production-oriented Amazon opportunity research SaaS for Vercel.",
+  "main": "api/search.js",
+  "scripts": {
+    "build": "node -e \"console.log('Vercel serverless build: no compilation required')\"",
+    "start": "vercel dev"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "axios": "^1.11.0",
+    "express": "^5.1.0",
+    "raw-body": "^2.5.2"
+  }
+}
