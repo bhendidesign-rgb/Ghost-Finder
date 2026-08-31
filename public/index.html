@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Ghost Product Finder — live Amazon supply versus search-demand opportunity analysis.">
+  <title>Ghost Product Finder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <script src="https://gumroad.com/js/gumroad.js" defer></script>
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">G</span><div><strong>Ghost Product Finder</strong><small>Amazon opportunity intelligence</small></div></div>
+      <div class="top-actions"><span id="planStatus" class="plan-status">Free · 5 analyses/day</span><button id="activatePremium" class="secondary">Activate Premium</button><button id="ownerAccess" class="icon-btn" aria-label="Owner access">Owner</button><button id="themeToggle" class="icon-btn" aria-label="Toggle theme">☾</button></div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div>
+          <span class="eyebrow">LIVE MARKETPLACE ANALYSIS</span>
+          <h1>Find demand hiding behind low supply.</h1>
+          <p>Compare live Amazon listing supply with real search-volume data and turn the gap into an opportunity score.</p>
+        </div>
+        <div class="hero-stat"><span>Ghost Score</span><b>0–100</b><small>Demand ÷ supply signal</small></div>
+      </section>
+
+      <nav class="tabs" role="tablist">
+        <button class="tab active" data-tab="single">Single Analysis</button>
+        <button class="tab" data-tab="bulk">One-Click Bulk Finder</button>
+      </nav>
+
+      <section id="single" class="panel active">
+        <div class="card">
+          <div class="card-head"><div><h2>Analyze one keyword</h2><p>Live data only. No mock results.</p></div></div>
+          <form id="singleForm" class="form-grid">
+            <label>Keyword<input id="keyword" maxlength="160" required placeholder="e.g. travel toiletry bag"></label>
+            <label>Marketplace<select id="country"><option value="us">Amazon US</option><option value="uk">Amazon UK</option><option value="ca">Amazon Canada</option><option value="de">Amazon Germany</option><option value="in">Amazon India</option><option value="au">Amazon Australia</option><option value="fr">Amazon France</option><option value="it">Amazon Italy</option><option value="es">Amazon Spain</option><option value="jp">Amazon Japan</option><option value="mx">Amazon Mexico</option></select></label>
+            <button class="primary" type="submit"><span class="spinner hidden"></span>Analyze Opportunity</button>
+          </form>
+        </div>
+        <div id="singleResult" class="result-grid hidden"></div>
+      </section>
+
+      <section id="bulk" class="panel">
+        <div class="card locked" id="bulkLock">
+          <span class="lock">✦</span><h2>One-Click Bulk Finder</h2>
+          <p>Analyze a list of keywords in one workflow and export the live results to CSV.</p>
+          <a class="gumroad-button primary" href="https://gumroad.com/l/ghost-product-finder" data-gumroad-overlay-checkout="true">Unlock Premium — $9.99/month</a>
+          <p class="tiny">Replace the checkout URL with your actual Gumroad product URL.</p>
+        </div>
+        <div id="bulkApp" class="card hidden">
+          <h2>Bulk Finder</h2>
+          <p>Paste one keyword per line. Each row is a live provider request unless a recent server cache is available.</p>
+          <textarea id="bulkKeywords" maxlength="10000" placeholder="wireless label maker&#10;desk cable organizer&#10;travel toiletry bag"></textarea>
+          <div class="bulk-actions"><select id="bulkCountry"><option value="us">Amazon US</option><option value="uk">Amazon UK</option><option value="ca">Amazon Canada</option><option value="de">Amazon Germany</option><option value="in">Amazon India</option><option value="au">Amazon Australia</option></select><button id="bulkRun" class="primary">Run Bulk Finder</button><button id="exportCsv" class="secondary" disabled>Export Bulk to CSV</button></div>
+          <div id="bulkStatus"></div>
+          <div class="table-wrap"><table><thead><tr><th>Keyword</th><th>Search Volume</th><th>Amazon Products</th><th>Ghost Score</th><th>Opportunity</th></tr></thead><tbody id="bulkBody"></tbody></table></div>
+        </div>
+      </section>
+    </main>
+    <footer>Ghost Product Finder · Live-data SaaS · API keys remain server-side</footer>
+  </div>
+
+  <div id="licenseModal" class="modal hidden"><div class="modal-card"><button class="modal-close" data-close-modal="licenseModal">×</button><h2>Activate Premium</h2><p>Paste the Gumroad license key from your purchase receipt.</p><form id="activateForm"><input id="licenseKey" autocomplete="off" required placeholder="Gumroad license key"><button class="primary" type="submit">Verify License</button></form></div></div>
+  <div id="ownerModal" class="modal hidden"><div class="modal-card"><button class="modal-close" data-close-modal="ownerModal">×</button><h2>Owner Access</h2><p>Owner credentials are checked only on the server.</p><form id="ownerForm"><input id="ownerPassword" type="password" autocomplete="off" required placeholder="Owner password"><button class="primary" type="submit">Sign in</button></form></div></div>
+  <script src="/app.js" defer></script>
+</body>
+</html>
