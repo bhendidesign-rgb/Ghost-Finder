@@ -172,11 +172,12 @@ async function rainforestSearch(keyword, domain) {
    */
 
   const total = Number(
-    data.search_results_total ??
-    data.search_results?.total_results ??
-    data.pagination?.total_results ??
-    data.pagination?.total_results_count
-  );
+  data.search_results_total ??
+  data.search_information?.total_results ??
+  data.search_results?.total_results ??
+  data.pagination?.total_results ??
+  data.pagination?.total_results_count
+);
 
   if (!Number.isFinite(total)) {
     const providerMessage =
